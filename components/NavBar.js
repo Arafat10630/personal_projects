@@ -1,7 +1,16 @@
 import React from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 function NavBar(){
+    const router = useRouter()
+    const isActive = (r) =>{
+        if(r === router.pathname){
+            return " active"
+        }else{
+            return ""
+        }
+    }
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <Link href="/" className="navbar-brand">
@@ -12,24 +21,15 @@ function NavBar(){
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <Link className="nav-link" href="/cart"><i className="fa-solid fa-cart-shopping"></i> Cart</Link>                    
+                    <li className="nav-item">
+                        <Link href="/cart" className={"nav-link" + isActive('/cart')}><i className="fa-solid fa-cart-shopping" aria-hidden="true"></i> Cart</Link>                    
                     </li>
                     
-                    <li className="nav-item active">
-                        <Link className="nav-link" href="/signin"><i className="fa-solid fa-user"></i> Sign in</Link>                    
+                    <li className="nav-item">
+                        <Link href="/signin" className={"nav-link" + isActive('/signin')}><i className="fa-solid fa-user" aria-hidden="true"></i> Sign in</Link>                    
                     </li>
 
-                    {/* <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        User Profile
-                        </a>
-                        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a className="dropdown-item" href="#">Profile</a>
-                            <a className="dropdown-item" href="#">Logout</a>
-                        </div>
-                    </li> */}
-                </ul>
+                </ul> 
             </div>
         </nav>
     )
