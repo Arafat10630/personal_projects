@@ -21,7 +21,7 @@ const Signin = () => {
             
             <button type="submit" className="btn btn-dark w-100">Login</button>
             <p className="my-2">You don't have an account? 
-                <a href="/register" style={{color: 'crimson'}}> Register</a>
+                <a href="/register" style={{color: 'crimson'}}> Register Now</a>
             </p>
         </form>
     </div>
